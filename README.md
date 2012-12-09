@@ -18,7 +18,7 @@ It takes all work for running AsyncTask concurrently on any Android OS version, 
         task.execute();
     }
 
-Because AsyncTask.THREAD_POOL_EXECUTOR works only on api >= 11; I`m using own threadPoolExecutor
+Because AsyncTask.THREAD_POOL_EXECUTOR available only on api >= 11; I`m using own threadPoolExecutor
 
 With AsyncTaskExecutor you just need to write:
 
