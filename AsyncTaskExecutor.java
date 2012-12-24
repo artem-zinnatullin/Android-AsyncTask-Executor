@@ -29,7 +29,7 @@ public class AsyncTaskExecutor {
 	private static final ThreadFactory concurrentThreadFactory;
     private static final ThreadPoolExecutor concurrentExecutor;
     
-    private AsyncTaskExecutor() {};
+    private AsyncTaskExecutor() {}
     
     static {
     	CORE_POOL_SIZE = 5;
