@@ -1,4 +1,4 @@
-package ru.artemzin.android.asynctaskexecutor;
+package com.artemzin.android.asynctaskexecutor;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
