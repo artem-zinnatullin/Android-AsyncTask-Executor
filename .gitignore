@@ -19,5 +19,6 @@ local.properties
 .classpath
 .project
 
-# IDEA IDE project files
-.iml
+# IDEA IDE project files and folders
+*.iml
+.idea/
