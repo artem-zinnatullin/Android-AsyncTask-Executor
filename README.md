@@ -12,6 +12,8 @@ You want to execute your AsyncTask concurrently on any version of Android OS? Yo
 
 #####Or use AsyncTaskExecutor as Android Library Project (Better way)
 
+#####Or just use .jar file, look at Jar folder to get it
+
 It takes all work for running AsyncTask concurrently on any Android OS version, it is better that using:
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
