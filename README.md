@@ -1,20 +1,11 @@
-Android-Async-Task-Executor
-===========================
+#Android-AsyncTask-Executor
 
-You want to execute your AsyncTask concurrently on any version of Android OS? You needed AsyncTaskExecutor!
+##Why use it?
+Starting with Android Api >= [HONEYCOMB](http://developer.android.com/reference/android/os/Build.VERSION_CODES.html#HONEYCOMB) 
+AsyncTasks are executed on serial, which means that you could not run 2 or more AsyncTasks concurrently 
+without calling task.executeOnExecutor(...), it is not so easy as you would like to think.
 
----------------------------
-#####Please, look in UsageExampleActivity.java to see usage example of AsyncTaskExecutor
-
----------------------------
-
-#####Just copy AsyncTaskExecutor.java to your Android project!
-
-#####Or use AsyncTaskExecutor as Android Library Project (Better way)
-
-#####Or just use .jar file, look at Jar folder to get it
-
-It takes all work for running AsyncTask concurrently on any Android OS version, it is better that using:
+AsyncTask-Executor takes all work for running AsyncTask concurrently on any Android OS version, it is better that using:
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
         task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -22,13 +13,27 @@ It takes all work for running AsyncTask concurrently on any Android OS version, 
         task.execute();
     }
 
-Because AsyncTask.THREAD_POOL_EXECUTOR available only on api >= 11; I`m using own threadPoolExecutor
+Because AsyncTask.THREAD_POOL_EXECUTOR available only on api >= 11; I`m using my own *threadPoolExecutor*
 
-With AsyncTaskExecutor you just need to write:
+###With AsyncTaskExecutor you just need to write:
 
-    AsyncTaskExecutor.executeConcurrently(task, params);
+    AsyncTaskExecutor.executeConcurrently(task, params, ...);
 
-And that is all. No errors on Android 2.x, 3.x and 4.x
+And that is all. **No errors** on Android 2.x, 3.x and 4.x
+
+---------------------------
+#####Please, look in UsageExampleActivity.java to see usage example of AsyncTaskExecutor
+
+---------------------------
+###How to import AsyncTask-Executor to your Android Project?
+
+* Just copy AsyncTaskExecutor.java to your Android project! (Simplest way)
+
+* Or use AsyncTaskExecutor as Android Library Project (Good way, if you want to see javadoc)
+
+* Or just use .jar file, look at Jar folder to get it (Easy way)
+
+---------------------------
 
 ####Do not forget!
 *AsyncTaskExecutor.executeConcurrently()* returns executing AsyncTask object and 
