@@ -1,4 +1,4 @@
-package com.artemzin.android.asynctaskexecutor;
+package com.artemzin.android.asynctask_executor;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -16,7 +16,7 @@ import android.os.Build;
  * It takes all work for understanding device`s Android version 
  * and executes your AsyncTasks tasks concurrently
  * @author Artem Zinnatullin (artem.zinnatullin@gmail.com)
- * @version 1.0
+ * @version 1.2
  */
 public class AsyncTaskExecutor {
 	
@@ -32,15 +32,21 @@ public class AsyncTaskExecutor {
     private AsyncTaskExecutor() {}
     
     static {
-    	CORE_POOL_SIZE = 5;
+    	CORE_POOL_SIZE    = 5;
     	MAXIMUM_POOL_SIZE = 128;
-    	KEEP_ALIVE = 1;
-    	TIME_UNIT = TimeUnit.SECONDS;
+    	KEEP_ALIVE        = 1;
+    	TIME_UNIT         = TimeUnit.SECONDS;
     	
     	concurrentPoolWorkQueue = new LinkedBlockingQueue<Runnable>(10);
     	concurrentThreadFactory = new AsyncTaskThreadFactory();
-    	concurrentExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, 
-				MAXIMUM_POOL_SIZE, KEEP_ALIVE, TIME_UNIT, concurrentPoolWorkQueue, concurrentThreadFactory);
+    	concurrentExecutor      = new ThreadPoolExecutor(
+                CORE_POOL_SIZE,
+				MAXIMUM_POOL_SIZE,
+                KEEP_ALIVE,
+                TIME_UNIT,
+                concurrentPoolWorkQueue,
+                concurrentThreadFactory
+        );
     }
     
     /**
@@ -51,27 +57,22 @@ public class AsyncTaskExecutor {
      */
     @SuppressLint("NewApi") 
     public static <Params, Progress, Result> AsyncTask<Params, Progress, Result> 
-    	executeConcurrently(AsyncTask<Params, Progress, Result> task,
-    		Params... params) {
-    	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+    	executeConcurrently(AsyncTask<Params, Progress, Result> task, Params... params) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
     		task.executeOnExecutor(concurrentExecutor, params);
     	} else {
     		task.execute(params);
     	}
+
     	return task;
     }
 
     /**
      * Thread factory for AsyncTaskExecutor
      * @author Artem Zinnatullin
-     *
      */
     private static class AsyncTaskThreadFactory implements ThreadFactory {
-    	private final AtomicInteger count;
-    	
-    	{
-    		count = new AtomicInteger(1);
-    	}
+    	private final AtomicInteger count = new AtomicInteger(1);;
     	
 		@Override
 		public Thread newThread(Runnable r) {

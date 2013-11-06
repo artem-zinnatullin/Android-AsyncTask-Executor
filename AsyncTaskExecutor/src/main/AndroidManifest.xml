@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.artemzin.android.asynctask_executor"
+    android:versionCode="2"
+    android:versionName="1.2">
+
+    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="19" />
+    <application />
+</manifest>
