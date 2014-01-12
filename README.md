@@ -39,4 +39,3 @@ And that is all. **No errors** on Android 2.x, 3.x and 4.x
 *AsyncTaskExecutor.executeConcurrently()* returns executing AsyncTask object and 
 you can do what you want with it. For example, you could cancel running task or anything else you could do with AsyncTask object.
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/artem-zinnatullin/android-asynctask-executor/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
