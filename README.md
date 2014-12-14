@@ -1,5 +1,8 @@
 #Android-AsyncTask-Executor
 
+#VERY OUTDATED, PLEASE DON'T EVER USE THIS
+Take a look at [PriorityJobQueue](https://github.com/path/android-priority-jobqueue), [RxJava](https://github.com/ReactiveX/RxJava/wiki/The-RxJava-Android-Module) and other libraries for concurrent data processing
+
 ##Why use it?
 Starting with Android Api >= [HONEYCOMB](http://developer.android.com/reference/android/os/Build.VERSION_CODES.html#HONEYCOMB) 
 AsyncTasks are executed on serial, which means that you could not run 2 or more AsyncTasks concurrently 
